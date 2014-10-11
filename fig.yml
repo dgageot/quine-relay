@@ -1,0 +1,399 @@
+rexx:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=rexx
+
+R:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=R
+  links:
+    - rexx:next
+
+python:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=python
+  links:
+    - R:next
+
+prolog:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=prolog
+  links:
+    - python:next
+
+pike:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=pike
+  links:
+    - prolog:next
+
+php:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=php
+  links:
+    - pike:next
+
+perl:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=perl
+  links:
+    - php:next
+
+pascal:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=pascal
+  links:
+    - perl:next
+
+parrot:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=parrot
+  links:
+    - pascal:next
+
+octave:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=octave
+  links:
+    - parrot:next
+
+ocaml:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=ocaml
+  links:
+    - octave:next
+
+objectivec:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=objectivec
+  links:
+    - ocaml:next
+
+nodejs:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=nodejs
+  links:
+    - objectivec:next
+
+msil:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=msil
+  links:
+    - nodejs:next
+
+make:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=make
+  links:
+    - msil:next
+
+lua:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=lua
+  links:
+    - make:next
+
+logo:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=logo
+  links:
+    - lua:next
+
+llvm:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=llvm
+  links:
+    - logo:next
+
+java:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=java
+  links:
+    - llvm:next
+
+jasmin:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=jasmin
+  links:
+    - java:next
+
+intercal:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=intercal
+  links:
+    - jasmin:next
+
+icon:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=icon
+  links:
+    - intercal:next
+
+haskell:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=haskell
+  links:
+    - icon:next
+
+groovy:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=groovy
+  links:
+    - haskell:next
+
+go:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=go
+  links:
+    - groovy:next
+
+fortran90:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=fortran90
+  links:
+    - go:next
+
+fortran77:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=fortran77
+  links:
+    - fortran90:next
+
+forth:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=forth
+  links:
+    - fortran77:next
+
+clisp:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=clisp
+  links:
+    - forth:next
+
+coffeescript:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=coffeescript
+  links:
+    - clisp:next
+
+cobol:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=cobol
+  links:
+    - coffeescript:next
+
+clojure:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=clojure
+  links:
+    - cobol:next
+
+csharp:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=csharp
+  links:
+    - clojure:next
+
+cpp:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=cpp
+  links:
+    - csharp:next
+
+c:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=c
+  links:
+    - cpp:next
+
+brainfuck:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=brainfuck
+  links:
+    - c:next
+
+boo:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=boo
+  links:
+    - brainfuck:next
+
+awk:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=awk
+  links:
+    - boo:next
+
+algol68:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=algol68
+  links:
+    - awk:next
+
+ada:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=ada
+  links:
+    - algol68:next
+
+whitespace:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=whitespace
+  links:
+    - ada:next
+
+verilog:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=verilog
+  links:
+    - whitespace:next
+
+vala:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=vala
+  links:
+    - verilog:next
+
+unlambda:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=unlambda
+  links:
+    - vala:next
+
+tcl:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=tcl
+  links:
+    - unlambda:next
+
+smalltalk:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=smalltalk
+  links:
+    - tcl:next
+
+shell:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=shell
+  links:
+    - smalltalk:next
+
+scheme:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=scheme
+  links:
+    - shell:next
+
+scala:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=scala
+  links:
+    - scheme:next
+
+ruby:
+  image: dgageot/quine-relay
+  mem_limit: 32M
+  environment:
+    - LANGUAGE=ruby
+  links:
+    - scala:next
+  ports:
+    - "8080:8080"
