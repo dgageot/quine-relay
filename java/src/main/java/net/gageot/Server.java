@@ -54,6 +54,7 @@ public class Server {
                             .start();
                     processCompile.waitFor();
 
+                    System.out.println(new File(root, to).length());
                     if (isTerminal) {
                         System.out.println("DONE");
                         return FileUtils.readFileToString(new File(root, to));
