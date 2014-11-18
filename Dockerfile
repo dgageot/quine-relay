@@ -4,6 +4,8 @@
 # Run:
 #   docker run --rm -p 8080:8080 -ti dgageot/quine-relay
 
+# curl --data-binary @QR.rb http://localdocker:8080/
+
 FROM ubuntu:14.10
 MAINTAINER David Gageot <david@gageot.net>
 
@@ -65,12 +67,13 @@ RUN apt-get install -y ucblogo
 RUN apt-get install -y valac
 RUN apt-get install -y neko
 RUN apt-get install -y maven
+RUN apt-get install -y scilab
 
 # Clone quine code
 #
 RUN git clone https://github.com/mame/quine-relay.git
 WORKDIR /quine-relay
-RUN cd vendor && make
+RUN git reset --hard 95107b876eb888fbabc4ec12b3c75a524ef4f141
 
 # Warmup java build
 #
@@ -79,13 +82,13 @@ ADD docker/old_version.tgz /java
 RUN mvn verify dependency:copy-dependencies -DskipTests \
     && rm -Rf /java
 
-ADD list /quine-relay/list
-ADD old.sh /quine-relay/old.sh
+ADD steps /quine-relay/steps
+ADD commands.sh /quine-relay/commands.sh
 
 EXPOSE 8080
 ENV LANGUAGE ruby
 
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-DPROD_MODE=true", "-Xmx24M", "-jar", "target/quine.jar"]
+CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-DPROD_MODE=true", "-Xmx32M", "-jar", "target/quine.jar"]
 
 # Build java webapp
 #

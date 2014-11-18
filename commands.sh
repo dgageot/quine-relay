@@ -29,7 +29,7 @@ ghc QR.hs && ./QR > QR.icn
 icont -s QR.icn && ./QR > QR.i
 ick -bfO QR.i && ./QR > QR.j
 jasmin QR.j && CLASSPATH=. java QR > QR.java
-javac QR.java && CLASSPATH=. java QR > QR.ll
+javac QR.java && CLASSPATH=. /usr/lib/jvm/java-8-openjdk-amd64/bin/java QR > QR.ll
 llvm-as QR.ll && lli QR.bc > QR.logo
 logo QR.logo > QR.lua
 lua QR.lua > QR.makefile
@@ -47,4 +47,4 @@ pike QR.pike > QR.prolog
 swipl -q -t qr -f QR.prolog > QR.py
 python QR.py > QR.R
 R --slave < QR.R > QR.rexx
-rexx ./QR.rexx > QR2.rb
+rexx ./QR.rexx > QR.rb
