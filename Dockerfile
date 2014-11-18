@@ -90,11 +90,7 @@ ADD docker/old_version.tgz /java
 RUN mvn verify dependency:copy-dependencies -DskipTests \
     && rm -Rf /java
 
-ADD steps /quine-relay/steps
-ADD commands.sh /quine-relay/commands.sh
-
 EXPOSE 8080
-ENV LANGUAGE ruby
 
 CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-DPROD_MODE=true", "-Xmx32M", "-jar", "target/quine.jar"]
 
@@ -102,5 +98,5 @@ CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-DPROD_MODE=true", "-Xmx32M"
 #
 WORKDIR /java
 ADD java /java
-RUN mvn verify dependency:copy-dependencies -DskipTests
+RUN mvn verify dependency:copy-dependencies
 

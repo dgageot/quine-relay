@@ -6,7 +6,7 @@ set -e
 
 docker run -d --memory=1G --name=q-rexx -e LANGUAGE=rexx dgageot/quine-relay
 docker run -d --memory=1G --name=q-ratfor -e LANGUAGE=ratfor --link=q-rexx:next dgageot/quine-relay
-docker run -d --memory=1G --name=q-r -e LANGUAGE=R --link=q-ratfor:next dgageot/quine-relay
+docker run -d --memory=1G --name=q-r -e LANGUAGE=r --link=q-ratfor:next dgageot/quine-relay
 docker run -d --memory=1G --name=q-python -e LANGUAGE=python --link=q-r:next dgageot/quine-relay
 docker run -d --memory=1G --name=q-prolog -e LANGUAGE=prolog --link=q-python:next dgageot/quine-relay
 docker run -d --memory=1G --name=q-ppt -e LANGUAGE=ppt --link=q-prolog:next dgageot/quine-relay
