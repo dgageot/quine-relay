@@ -2,14 +2,13 @@ package net.gageot;
 
 import com.squareup.okhttp.*;
 import net.codestory.http.annotations.Post;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.regex.Pattern;
 
 import static java.util.stream.Collectors.toList;
 
@@ -17,10 +16,7 @@ public class QuineResource {
     private final String nextUrl;
 
     public QuineResource() {
-        String nextHost = System.getenv("NEXT_PORT_8080_TCP_ADDR");
-        String nextPort = System.getenv("DB_PORT_5432_TCP_PORT");
-
-        this.nextUrl = "http://" + nextHost + ":" + nextPort;
+        this.nextUrl = "next:8080";
     }
 
     public QuineResource(String nextUrl) {
@@ -28,7 +24,7 @@ public class QuineResource {
     }
 
     @Post("/run/:language")
-    public String run(String language, String script) throws IOException, InterruptedException {
+    public byte[] run(String language, byte[] script) throws IOException, InterruptedException {
         List<String> steps = Files.readAllLines(Paths.get("steps"));
 
         int index = steps.indexOf(language);
@@ -44,8 +40,8 @@ public class QuineResource {
         System.out.println(command);
 
         // Execute language
-        String result = runScript(script, command);
-        System.out.println(result.length());
+        byte[] result = runScript(script, command);
+        System.out.println(result.length);
 
         // Call next in chain
         if (index == (steps.size() - 1)) {
@@ -56,27 +52,32 @@ public class QuineResource {
         System.out.println("Sending query to " + nextUrl);
         Request request = new Request.Builder()
                 .url("http://" + nextUrl + "/run/" + steps.get(index + 1))
-                .post(RequestBody.create(MediaType.parse("text/plain"), result))
+                .post(RequestBody.create(MediaType.parse("application/octet-stream"), result))
                 .build();
 
         Response response = new OkHttpClient().newCall(request).execute();
-        return response.body().string();
+        return response.body().bytes();
     }
 
-    protected String runScript(String script, String command) throws IOException, InterruptedException {
+    protected byte[] runScript(byte[] script, String command) throws IOException, InterruptedException {
         File root = new File("/quine-relay");
 
         // Find input and output
-        List<String> files = Stream.of(command.split(" "))
+        List<String> files = Pattern
+                .compile(" ")
+                .splitAsStream(command)
                 .filter(part -> part.toLowerCase().contains("qr."))
                 .map(part -> part.substring(part.toLowerCase().indexOf("qr.")))
                 .collect(toList());
 
         String from = files.get(0);
+        if ("QR.r.f".equals(from)) {
+            from = "QR.r";
+        }
         String to = files.get(files.size() - 1);
 
         // Write input
-        FileUtils.write(new File(root, from), script);
+        Files.write(new File(root, from).toPath(), script);
 
         // Run script
         new ProcessBuilder("bash", "-c", command)
@@ -84,6 +85,6 @@ public class QuineResource {
                 .start()
                 .waitFor();
 
-        return FileUtils.readFileToString(new File(root, to));
+        return Files.readAllBytes(new File(root, to).toPath());
     }
 }

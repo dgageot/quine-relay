@@ -36,8 +36,8 @@ public class ServerTest {
         for (int i = steps.size() - 1; i >= 0; i--) {
             QuineResource quineResource = new QuineResource("localhost:" + previousPort) {
                 @Override
-                protected String runScript(String script, String command) throws IOException, InterruptedException {
-                    return "DONE";
+                protected byte[] runScript(byte[] script, String command) {
+                    return "DONE".getBytes();
                 }
             };
 

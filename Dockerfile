@@ -4,7 +4,7 @@
 # Run:
 #   docker run --rm -p 8080:8080 -ti dgageot/quine-relay
 
-# curl --data-binary @QR.rb http://localdocker:8080/
+# curl --data-binary @QR.rb http://localdocker:8080/run/ruby
 
 FROM ubuntu:14.10
 MAINTAINER David Gageot <david@gageot.net>
@@ -91,6 +91,7 @@ RUN mvn verify dependency:copy-dependencies -DskipTests \
     && rm -Rf /java
 
 EXPOSE 8080
+ENV PATH $PATH:/usr/games
 
 CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-DPROD_MODE=true", "-Xmx32M", "-jar", "target/quine.jar"]
 
