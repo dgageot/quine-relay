@@ -51,7 +51,7 @@ public class ShGenerator {
         script.append("./logs.sh " + steps.stream().map(step -> "q-" + step).collect(joining(" ")));
 
         System.out.println(script);
-        FileUtils.write(new File("../run.sh"), script);
-        new File("../run.sh").setExecutable(true);
+        FileUtils.write(new File("../server.sh"), script);
+        new File("../server.sh").setExecutable(true);
     }
 }
