@@ -71,8 +71,8 @@ public class QuineResource {
                 .collect(toList());
 
         String from = files.get(0);
-        if ("QR.r.f".equals(from)) {
-            from = "QR.r";
+        if ("QR.ratfor.f".equals(from)) {
+            from = "QR.ratfor";
         }
         String to = files.get(files.size() - 1);
 

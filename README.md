@@ -4,6 +4,7 @@
 
 # Run
 
-	./server.sh
-    ./client.sh
-
+```bash
+./server.sh
+./client.sh
+```
