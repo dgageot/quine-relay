@@ -10,7 +10,8 @@ function killJobs() {
 trap killJobs EXIT
 
 for NAME in "$@"; do
-	docker logs -f ${NAME} &
+	echo $NAME
+	docker logs -f $NAME &
 done
 
 wait

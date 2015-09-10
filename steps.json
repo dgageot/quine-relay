@@ -1,0 +1,801 @@
+[
+    {
+        "command": "ruby QR.rb > QR.scala",
+        "from": "QR.rb",
+        "language": "ruby",
+        "container": "q-ruby",
+        "next": "scala",
+        "to": "QR.scala"
+    },
+    {
+        "command": "scalac QR.scala && scala QR > QR.scm",
+        "from": "QR.scala",
+        "language": "scala",
+        "container": "q-scala",
+        "next": "scheme",
+        "to": "QR.scm"
+    },
+    {
+        "command": "gosh QR.scm > QR.sci",
+        "from": "QR.scm",
+        "language": "scheme",
+        "container": "q-scheme",
+        "next": "scilab",
+        "to": "QR.sci"
+    },
+    {
+        "command": "scilab -nw -nb -f QR.sci > QR.bash",
+        "from": "QR.sci",
+        "language": "scilab",
+        "container": "q-scilab",
+        "next": "shell",
+        "to": "QR.bash"
+    },
+    {
+        "command": "bash QR.bash > QR.sl",
+        "from": "QR.bash",
+        "language": "shell",
+        "container": "q-shell",
+        "next": "slang",
+        "to": "QR.sl"
+    },
+    {
+        "command": "slsh QR.sl > QR.st",
+        "from": "QR.sl",
+        "language": "slang",
+        "container": "q-slang",
+        "next": "smalltalk",
+        "to": "QR.st"
+    },
+    {
+        "command": "gst QR.st > QR.spl",
+        "from": "QR.st",
+        "language": "smalltalk",
+        "container": "q-smalltalk",
+        "next": "spl",
+        "to": "QR.spl"
+    },
+    {
+        "command": "splrun QR.spl > QR.sml",
+        "from": "QR.spl",
+        "language": "spl",
+        "container": "q-spl",
+        "next": "ml",
+        "to": "QR.sml"
+    },
+    {
+        "command": "mlton @MLton fixed-heap 200M -- QR.sml && ./QR > QR.sq",
+        "from": "QR.sml",
+        "language": "ml",
+        "container": "q-ml",
+        "next": "subleq",
+        "to": "QR.sq"
+    },
+    {
+        "command": "ruby /quine-relay/vendor/subleq.rb QR.sq > QR.tcl",
+        "from": "QR.sq",
+        "language": "subleq",
+        "container": "q-subleq",
+        "next": "tcl",
+        "to": "QR.tcl"
+    },
+    {
+        "command": "tclsh QR.tcl > QR.t",
+        "from": "QR.tcl",
+        "language": "tcl",
+        "container": "q-tcl",
+        "next": "thue",
+        "to": "QR.t"
+    },
+    {
+        "command": "ruby /quine-relay/vendor/thue.rb QR.t > QR.unl",
+        "from": "QR.t",
+        "language": "thue",
+        "container": "q-thue",
+        "next": "unlambda",
+        "to": "QR.unl"
+    },
+    {
+        "command": "ruby /quine-relay/vendor/unlambda.rb QR.unl > QR.vala",
+        "from": "QR.unl",
+        "language": "unlambda",
+        "container": "q-unlambda",
+        "next": "vala",
+        "to": "QR.vala"
+    },
+    {
+        "command": "valac QR.vala && ./QR > QR.v",
+        "from": "QR.vala",
+        "language": "vala",
+        "container": "q-vala",
+        "next": "verilog",
+        "to": "QR.v"
+    },
+    {
+        "command": "iverilog -o QR QR.v && ./QR -vcd-none > QR.vb",
+        "from": "QR.v",
+        "language": "verilog",
+        "container": "q-verilog",
+        "next": "vbasic",
+        "to": "QR.vb"
+    },
+    {
+        "command": "vbnc QR.vb && mono ./QR.exe > QR.ws",
+        "from": "QR.vb",
+        "language": "vbasic",
+        "container": "q-vbasic",
+        "next": "whitespace",
+        "to": "QR.ws"
+    },
+    {
+        "command": "ruby /quine-relay/vendor/whitespace.rb QR.ws > QR.xslt",
+        "from": "QR.ws",
+        "language": "whitespace",
+        "container": "q-whitespace",
+        "next": "xslt",
+        "to": "QR.xslt"
+    },
+    {
+        "command": "xsltproc QR.xslt > QR.yorick",
+        "from": "QR.xslt",
+        "language": "xslt",
+        "container": "q-xslt",
+        "next": "yorick",
+        "to": "QR.yorick"
+    },
+    {
+        "command": "yorick -batch QR.yorick > QR.azm",
+        "from": "QR.yorick",
+        "language": "yorick",
+        "container": "q-yorick",
+        "next": "zoem",
+        "to": "QR.azm"
+    },
+    {
+        "command": "zoem -i QR.azm > QR.+",
+        "from": "QR.azm",
+        "language": "zoem",
+        "container": "q-zoem",
+        "next": "aplus",
+        "to": "QR.+"
+    },
+    {
+        "command": "a+ QR.+ > qr.adb",
+        "from": "QR.+",
+        "language": "aplus",
+        "container": "q-aplus",
+        "next": "ada",
+        "to": "qr.adb"
+    },
+    {
+        "command": "gnatmake qr.adb && ./qr > QR.als",
+        "from": "qr.adb",
+        "language": "ada",
+        "container": "q-ada",
+        "next": "afnix",
+        "to": "QR.als"
+    },
+    {
+        "command": "axi QR.als > QR.a68",
+        "from": "QR.als",
+        "language": "afnix",
+        "container": "q-afnix",
+        "next": "algol68",
+        "to": "QR.a68"
+    },
+    {
+        "command": "a68g QR.a68 > QR.ante",
+        "from": "QR.a68",
+        "language": "algol68",
+        "container": "q-algol68",
+        "next": "ante",
+        "to": "QR.ante"
+    },
+    {
+        "command": "ruby /quine-relay/vendor/ante.rb QR.ante > QR.asy",
+        "from": "QR.ante",
+        "language": "ante",
+        "container": "q-ante",
+        "next": "asymptote",
+        "to": "QR.asy"
+    },
+    {
+        "command": "asy QR.asy > QR.dats",
+        "from": "QR.asy",
+        "language": "asymptote",
+        "container": "q-asymptote",
+        "next": "ats",
+        "to": "QR.dats"
+    },
+    {
+        "command": "atscc -o QR QR.dats && ./QR > QR.awk",
+        "from": "QR.dats",
+        "language": "ats",
+        "container": "q-ats",
+        "next": "awk",
+        "to": "QR.awk"
+    },
+    {
+        "command": "awk -f QR.awk > QR.bc",
+        "from": "QR.awk",
+        "language": "awk",
+        "container": "q-awk",
+        "next": "bc",
+        "to": "QR.bc"
+    },
+    {
+        "command": "BC_LINE_LENGTH=4000000 bc -q QR.bc > QR.bef",
+        "from": "QR.bc",
+        "language": "bc",
+        "container": "q-bc",
+        "next": "befunge",
+        "to": "QR.bef"
+    },
+    {
+        "command": "cfunge QR.bef > QR.Blc",
+        "from": "QR.bef",
+        "language": "befunge",
+        "container": "q-befunge",
+        "next": "blc8",
+        "to": "QR.Blc"
+    },
+    {
+        "command": "ruby /quine-relay/vendor/blc.rb < QR.Blc > QR.boo",
+        "from": "QR.Blc",
+        "language": "blc8",
+        "container": "q-blc8",
+        "next": "boo",
+        "to": "QR.boo"
+    },
+    {
+        "command": "booi QR.boo > QR.bf",
+        "from": "QR.boo",
+        "language": "boo",
+        "container": "q-boo",
+        "next": "brainfuck",
+        "to": "QR.bf"
+    },
+    {
+        "command": "bf QR.bf > QR.c",
+        "from": "QR.bf",
+        "language": "brainfuck",
+        "container": "q-brainfuck",
+        "next": "c",
+        "to": "QR.c"
+    },
+    {
+        "command": "gcc -o QR QR.c && ./QR > QR.cpp",
+        "from": "QR.c",
+        "language": "c",
+        "container": "q-c",
+        "next": "cpp",
+        "to": "QR.cpp"
+    },
+    {
+        "command": "g++ -o QR QR.cpp && ./QR > QR.cs",
+        "from": "QR.cpp",
+        "language": "cpp",
+        "container": "q-cpp",
+        "next": "csharp",
+        "to": "QR.cs"
+    },
+    {
+        "command": "mcs QR.cs && mono QR.exe > QR.cd",
+        "from": "QR.cs",
+        "language": "csharp",
+        "container": "q-csharp",
+        "next": "cduce",
+        "to": "QR.cd"
+    },
+    {
+        "command": "cduce QR.cd > QR.chef",
+        "from": "QR.cd",
+        "language": "cduce",
+        "container": "q-cduce",
+        "next": "chef",
+        "to": "QR.chef"
+    },
+    {
+        "command": "PERL5LIB=/quine-relay/vendor/local/lib/perl5 compilechef QR.chef QR.chef.pl && perl QR.chef.pl > QR.clj",
+        "from": "QR.chef",
+        "language": "chef",
+        "container": "q-chef",
+        "next": "clojure",
+        "to": "QR.clj"
+    },
+    {
+        "command": "clojure QR.clj > QR.cob",
+        "from": "QR.clj",
+        "language": "clojure",
+        "container": "q-clojure",
+        "next": "cobol",
+        "to": "QR.cob"
+    },
+    {
+        "command": "cobc -O2 -x QR.cob && ./QR > QR.coffee",
+        "from": "QR.cob",
+        "language": "cobol",
+        "container": "q-cobol",
+        "next": "coffeescript",
+        "to": "QR.coffee"
+    },
+    {
+        "command": "coffee QR.coffee > QR.lisp",
+        "from": "QR.coffee",
+        "language": "coffeescript",
+        "container": "q-coffeescript",
+        "next": "clisp",
+        "to": "QR.lisp"
+    },
+    {
+        "command": "clisp QR.lisp > QR.d",
+        "from": "QR.lisp",
+        "language": "clisp",
+        "container": "q-clisp",
+        "next": "d",
+        "to": "QR.d"
+    },
+    {
+        "command": "gdc -o QR QR.d && ./QR > QR.dc",
+        "from": "QR.d",
+        "language": "d",
+        "container": "q-d",
+        "next": "dc",
+        "to": "QR.dc"
+    },
+    {
+        "command": "dc QR.dc > QR.ec",
+        "from": "QR.dc",
+        "language": "dc",
+        "container": "q-dc",
+        "next": "ec",
+        "to": "QR.ec"
+    },
+    {
+        "command": "ecp -c QR.ec -o QR.sym && ecc -c QR.ec -o QR.c && ecs -console QR.sym QR.imp -o QR.main.ec && ecp -c QR.main.ec -o QR.main.sym && ecc -c QR.main.ec -o QR.main.c && gcc -o QR QR.c QR.main.c -lecereCOM && ./QR > QR.el",
+        "from": "QR.ec",
+        "language": "ec",
+        "container": "q-ec",
+        "next": "emacslist",
+        "to": "QR.el"
+    },
+    {
+        "command": "emacs -Q --script QR.el > QR.erl",
+        "from": "QR.el",
+        "language": "emacslist",
+        "container": "q-emacslist",
+        "next": "erlang",
+        "to": "QR.erl"
+    },
+    {
+        "command": "escript QR.erl > QR.fsx",
+        "from": "QR.erl",
+        "language": "erlang",
+        "container": "q-erlang",
+        "next": "fsharp",
+        "to": "QR.fsx"
+    },
+    {
+        "command": "fsharpc QR.fsx -o QR.exe && mono QR.exe > QR.fal",
+        "from": "QR.fsx",
+        "language": "fsharp",
+        "container": "q-fsharp",
+        "next": "falcon",
+        "to": "QR.fal"
+    },
+    {
+        "command": "falcon QR.fal > QR.false",
+        "from": "QR.fal",
+        "language": "falcon",
+        "container": "q-falcon",
+        "next": "false",
+        "to": "QR.false"
+    },
+    {
+        "command": "ruby /quine-relay/vendor/false.rb QR.false > QR.fs",
+        "from": "QR.false",
+        "language": "false",
+        "container": "q-false",
+        "next": "forth",
+        "to": "QR.fs"
+    },
+    {
+        "command": "gforth QR.fs > QR.f",
+        "from": "QR.fs",
+        "language": "forth",
+        "container": "q-forth",
+        "next": "fortran77",
+        "to": "QR.f"
+    },
+    {
+        "command": "f2c QR.f && gcc -o QR QR.c -L/usr/lib -lf2c -lm && ./QR > QR.f90",
+        "from": "QR.f",
+        "language": "fortran77",
+        "container": "q-fortran77",
+        "next": "fortran90",
+        "to": "QR.f90"
+    },
+    {
+        "command": "gfortran -o QR QR.f90 && ./QR > QR.gbs",
+        "from": "QR.f90",
+        "language": "fortran90",
+        "container": "q-fortran90",
+        "next": "gambas",
+        "to": "QR.gbs"
+    },
+    {
+        "command": "gbs3 QR.gbs > QR.g",
+        "from": "QR.gbs",
+        "language": "gambas",
+        "container": "q-gambas",
+        "next": "gap",
+        "to": "QR.g"
+    },
+    {
+        "command": "gap -q QR.g > QR.gel",
+        "from": "QR.g",
+        "language": "gap",
+        "container": "q-gap",
+        "next": "gel",
+        "to": "QR.gel"
+    },
+    {
+        "command": "genius QR.gel > QR.plt",
+        "from": "QR.gel",
+        "language": "gel",
+        "container": "q-gel",
+        "next": "gnuplot",
+        "to": "QR.plt"
+    },
+    {
+        "command": "gnuplot QR.plt > QR.go",
+        "from": "QR.plt",
+        "language": "gnuplot",
+        "container": "q-gnuplot",
+        "next": "go",
+        "to": "QR.go"
+    },
+    {
+        "command": "go run QR.go > QR.gpt",
+        "from": "QR.go",
+        "language": "go",
+        "container": "q-go",
+        "next": "gpt",
+        "to": "QR.gpt"
+    },
+    {
+        "command": "gpt -o QR QR.gpt && ./QR > QR.gri",
+        "from": "QR.gpt",
+        "language": "gpt",
+        "container": "q-gpt",
+        "next": "gri",
+        "to": "QR.gri"
+    },
+    {
+        "command": "gri QR.gri > QR.groovy",
+        "from": "QR.gri",
+        "language": "gri",
+        "container": "q-gri",
+        "next": "groovy",
+        "to": "QR.groovy"
+    },
+    {
+        "command": "groovy QR.groovy > QR.hs",
+        "from": "QR.groovy",
+        "language": "groovy",
+        "container": "q-groovy",
+        "next": "haskell",
+        "to": "QR.hs"
+    },
+    {
+        "command": "ghc QR.hs && ./QR > QR.hx",
+        "from": "QR.hs",
+        "language": "haskell",
+        "container": "q-haskell",
+        "next": "haxe",
+        "to": "QR.hx"
+    },
+    {
+        "command": "haxe -main QR.hx -neko QR.n && neko QR.n > QR.icn",
+        "from": "QR.hx",
+        "language": "haxe",
+        "container": "q-haxe",
+        "next": "icon",
+        "to": "QR.icn"
+    },
+    {
+        "command": "icont -s QR.icn && ./QR > QR.i",
+        "from": "QR.icn",
+        "language": "icon",
+        "container": "q-icon",
+        "next": "intercal",
+        "to": "QR.i"
+    },
+    {
+        "command": "ick -bfO QR.i && ./QR > QR.j",
+        "from": "QR.i",
+        "language": "intercal",
+        "container": "q-intercal",
+        "next": "jasmin",
+        "to": "QR.j"
+    },
+    {
+        "command": "jasmin QR.j && java QR > QR.java",
+        "from": "QR.j",
+        "language": "jasmin",
+        "container": "q-jasmin",
+        "next": "java",
+        "to": "QR.java"
+    },
+    {
+        "command": "javac QR.java && java QR > QR.js",
+        "from": "QR.java",
+        "language": "java",
+        "container": "q-java",
+        "next": "javascript",
+        "to": "QR.js"
+    },
+    {
+        "command": "rhino QR.js > QR.jl",
+        "from": "QR.js",
+        "language": "javascript",
+        "container": "q-javascript",
+        "next": "julia",
+        "to": "QR.jl"
+    },
+    {
+        "command": "julia QR.jl > QR.k",
+        "from": "QR.jl",
+        "language": "julia",
+        "container": "q-julia",
+        "next": "katya",
+        "to": "QR.k"
+    },
+    {
+        "command": "kayac QR.k && ./QR > QR.lazy",
+        "from": "QR.k",
+        "language": "katya",
+        "container": "q-katya",
+        "next": "lazyk",
+        "to": "QR.lazy"
+    },
+    {
+        "command": "lazyk QR.lazy > qr.li",
+        "from": "QR.lazy",
+        "language": "lazyk",
+        "container": "q-lazyk",
+        "next": "lisaac",
+        "to": "qr.li"
+    },
+    {
+        "command": "lisaac qr.li && ./qr > QR.ll",
+        "from": "qr.li",
+        "language": "lisaac",
+        "container": "q-lisaac",
+        "next": "llvm",
+        "to": "QR.ll"
+    },
+    {
+        "command": "llvm-as QR.ll && lli QR.bc > QR.logo",
+        "from": "QR.ll",
+        "language": "llvm",
+        "container": "q-llvm",
+        "next": "logo",
+        "to": "QR.logo"
+    },
+    {
+        "command": "logo QR.logo > QR.lol",
+        "from": "QR.logo",
+        "language": "logo",
+        "container": "q-logo",
+        "next": "lolcode",
+        "to": "QR.lol"
+    },
+    {
+        "command": "lci QR.lol > QR.lua",
+        "from": "QR.lol",
+        "language": "lolcode",
+        "container": "q-lolcode",
+        "next": "lua",
+        "to": "QR.lua"
+    },
+    {
+        "command": "lua QR.lua > QR.mk",
+        "from": "QR.lua",
+        "language": "lua",
+        "container": "q-lua",
+        "next": "make",
+        "to": "QR.mk"
+    },
+    {
+        "command": "make -f QR.mk > QR.mac",
+        "from": "QR.mk",
+        "language": "make",
+        "container": "q-make",
+        "next": "maxima",
+        "to": "QR.mac"
+    },
+    {
+        "command": "maxima -q --init-mac=QR.mac > QR.il",
+        "from": "QR.mac",
+        "language": "maxima",
+        "container": "q-maxima",
+        "next": "msil",
+        "to": "QR.il"
+    },
+    {
+        "command": "ilasm QR.il && mono QR.exe > QR.asm",
+        "from": "QR.il",
+        "language": "msil",
+        "container": "q-msil",
+        "next": "nasm",
+        "to": "QR.asm"
+    },
+    {
+        "command": "nasm -felf QR.asm && ld -m elf_i386 -o QR QR.o && ./QR > QR.neko",
+        "from": "QR.asm",
+        "language": "nasm",
+        "container": "q-nasm",
+        "next": "neko",
+        "to": "QR.neko"
+    },
+    {
+        "command": "nekoc QR.neko && neko QR.n > QR.5c",
+        "from": "QR.neko",
+        "language": "neko",
+        "container": "q-neko",
+        "next": "nickle",
+        "to": "QR.5c"
+    },
+    {
+        "command": "nickle QR.5c > QR.m",
+        "from": "QR.5c",
+        "language": "nickle",
+        "container": "q-nickle",
+        "next": "objectivec",
+        "to": "QR.m"
+    },
+    {
+        "command": "gcc -o QR QR.m && ./QR > QR.ml",
+        "from": "QR.m",
+        "language": "objectivec",
+        "container": "q-objectivec",
+        "next": "ocaml",
+        "to": "QR.ml"
+    },
+    {
+        "command": "ocaml QR.ml > QR.octave",
+        "from": "QR.ml",
+        "language": "ocaml",
+        "container": "q-ocaml",
+        "next": "octave",
+        "to": "QR.octave"
+    },
+    {
+        "command": "octave -qf QR.octave > QR.ook",
+        "from": "QR.octave",
+        "language": "octave",
+        "container": "q-octave",
+        "next": "ook",
+        "to": "QR.ook"
+    },
+    {
+        "command": "ruby /quine-relay/vendor/ook-to-bf.rb QR.ook QR.ook.bf && bf QR.ook.bf > QR.gp",
+        "from": "QR.ook",
+        "language": "ook",
+        "container": "q-ook",
+        "next": "parigp",
+        "to": "QR.gp"
+    },
+    {
+        "command": "gp -f -q QR.gp > QR.pasm",
+        "from": "QR.gp",
+        "language": "parigp",
+        "container": "q-parigp",
+        "next": "parrot",
+        "to": "QR.pasm"
+    },
+    {
+        "command": "parrot QR.pasm > QR.pas",
+        "from": "QR.pasm",
+        "language": "parrot",
+        "container": "q-parrot",
+        "next": "pascal",
+        "to": "QR.pas"
+    },
+    {
+        "command": "fpc QR.pas && ./QR > QR.pl",
+        "from": "QR.pas",
+        "language": "pascal",
+        "container": "q-pascal",
+        "next": "perl",
+        "to": "QR.pl"
+    },
+    {
+        "command": "perl QR.pl > QR.php",
+        "from": "QR.pl",
+        "language": "perl",
+        "container": "q-perl",
+        "next": "php",
+        "to": "QR.php"
+    },
+    {
+        "command": "php QR.php > QR.png",
+        "from": "QR.php",
+        "language": "php",
+        "container": "q-php",
+        "next": "piet",
+        "to": "QR.png"
+    },
+    {
+        "command": "npiet QR.png > QR.pike",
+        "from": "QR.png",
+        "language": "piet",
+        "container": "q-piet",
+        "next": "pike",
+        "to": "QR.pike"
+    },
+    {
+        "command": "pike QR.pike > QR.ps",
+        "from": "QR.pike",
+        "language": "pike",
+        "container": "q-pike",
+        "next": "postscript",
+        "to": "QR.ps"
+    },
+    {
+        "command": "gs -dNODISPLAY -q QR.ps > QR.ppt",
+        "from": "QR.ps",
+        "language": "postscript",
+        "container": "q-postscript",
+        "next": "ppt",
+        "to": "QR.ppt"
+    },
+    {
+        "command": "ppt -d < QR.ppt > QR.prolog",
+        "from": "QR.ppt",
+        "language": "ppt",
+        "container": "q-ppt",
+        "next": "prolog",
+        "to": "QR.prolog"
+    },
+    {
+        "command": "swipl -q -t qr -f QR.prolog > QR.py",
+        "from": "QR.prolog",
+        "language": "prolog",
+        "container": "q-prolog",
+        "next": "python",
+        "to": "QR.py"
+    },
+    {
+        "command": "python QR.py > QR.R",
+        "from": "QR.py",
+        "language": "python",
+        "container": "q-python",
+        "next": "r",
+        "to": "QR.R"
+    },
+    {
+        "command": "R --slave -f QR.R > QR.ratfor",
+        "from": "QR.R",
+        "language": "r",
+        "container": "q-r",
+        "next": "ratfor",
+        "to": "QR.ratfor"
+    },
+    {
+        "command": "ratfor -o QR.ratfor.f QR.ratfor && gfortran -o QR QR.ratfor.f && ./QR > QR.rexx",
+        "from": "QR.ratfor",
+        "language": "ratfor",
+        "container": "q-ratfor",
+        "next": "rexx",
+        "to": "QR.rexx"
+    },
+    {
+        "command": "rexx ./QR.rexx > QR2.rb",
+        "from": "QR.rexx",
+        "language": "rexx",
+        "container": "q-rexx",
+        "to": "QR2.rb"
+    }
+]

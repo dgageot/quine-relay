@@ -1,136 +1,117 @@
-# Build:
-#   docker build -t dgageot/quine-relay .
-#
-# Run:
-#   docker run --rm -p 8080:8080 -ti dgageot/quine-relay
-
-# curl --data-binary @QR.rb http://localdocker:8080/run/ruby
-
-FROM ubuntu:vivid
+FROM ubuntu:15.04
 MAINTAINER David Gageot <david@gageot.net>
 
-RUN apt-get update -qq
-RUN apt-get install -y afnix
-RUN apt-get install -y algol68g
-RUN apt-get install -y aplus-fsf
-RUN apt-get install -y asymptote
-RUN apt-get install -y ats-lang-anairiats
-RUN apt-get install -y bash
-RUN apt-get install -y bc
-RUN apt-get install -y bf
-RUN apt-get install -y boo
-RUN apt-get install -y bsdgames
-RUN apt-get install -y cduce
-RUN apt-get install -y clisp
-RUN apt-get install -y clojure1.6
-RUN apt-get install -y cmake
-RUN apt-get install -y coffeescript
-RUN apt-get install -y dc
-RUN apt-get install -y ecere-sdk
-RUN apt-get install -y emacs24
-RUN apt-get install -y erlang
-RUN apt-get install -y f2c
-RUN apt-get install -y falconpl
-RUN apt-get install -y fp-compiler
-RUN apt-get install -y fsharp
-RUN apt-get install -y g++
-RUN apt-get install -y gambas3-script
-RUN apt-get install -y gap
-RUN apt-get install -y gauche
-RUN apt-get install -y gawk
-RUN apt-get install -y gcc
-RUN apt-get install -y gdc
-RUN apt-get install -y genius
-RUN apt-get install -y gforth
-RUN apt-get install -y gfortran
-RUN apt-get install -y ghc
-RUN apt-get install -y ghostscript
-RUN apt-get install -y gnat
-RUN apt-get install -y gnu-smalltalk
-RUN apt-get install -y gnuplot
-RUN apt-get install -y gobjc
-RUN apt-get install -y golang
-RUN apt-get install -y gpt
-RUN apt-get install -y gri
-RUN apt-get install -y groff
-RUN apt-get install -y groovy
-RUN apt-get install -y haxe
-RUN apt-get install -y icont
-RUN apt-get install -y iconx
-RUN apt-get install -y intercal
-RUN apt-get install -y iverilog
-RUN apt-get install -y jasmin-sable
-RUN apt-get install -y julia
-RUN apt-get install -y kaya
-RUN apt-get install -y libgd2-xpm-dev
-RUN apt-get install -y libpng12-dev
-RUN apt-get install -y lisaac
-RUN apt-get install -y llvm
-RUN apt-get install -y lua5.2
-RUN apt-get install -y make
-RUN apt-get install -y maxima
-RUN apt-get install -y mlton
-RUN apt-get install -y mono-devel
-RUN apt-get install -y mono-mcs
-RUN apt-get install -y mono-vbnc
-RUN apt-get install -y nasm
-RUN apt-get install -y neko
-RUN apt-get install -y nickle
-RUN apt-get install -y ocaml
-RUN apt-get install -y octave
-RUN apt-get install -y open-cobol
-RUN apt-get install -y openjdk-8-jdk
-RUN apt-get install -y pari-gp
-RUN apt-get install -y parrot
-RUN apt-get install -y perl
-RUN apt-get install -y php5-cli
-RUN apt-get install -y pike7.8
-RUN apt-get install -y python
-RUN apt-get install -y r-base
-RUN apt-get install -y ratfor
-RUN apt-get install -y regina-rexx
-RUN apt-get install -y rhino
-RUN apt-get install -y ruby2.1
-RUN apt-get install -y scala
-RUN apt-get install -y scilab
-RUN apt-get install -y slsh
-RUN apt-get install -y spl-core
-RUN apt-get install -y swi-prolog
-RUN apt-get install -y tcl
-RUN apt-get install -y ucblogo
-RUN apt-get install -y valac
-RUN apt-get install -y xsltproc
-RUN apt-get install -y yorick
-RUN apt-get install -y zoem
-RUN apt-get install -y git
-RUN apt-get install -y tcc
-RUN apt-get install -y maven
+RUN apt-get update -qq && apt-get install -y \
+	afnix \
+	algol68g \
+	aplus-fsf \
+	asymptote \
+	ats-lang-anairiats \
+	bash \
+	bc \
+	bf \
+	boo \
+	bsdgames \
+	cduce \
+	clisp \
+	clojure1.6 \
+	cmake \
+	coffeescript \
+	dc \
+	ecere-sdk \
+	emacs24 \
+	erlang \
+	f2c \
+	falconpl \
+	fp-compiler \
+	fsharp \
+	g++ \
+	gambas3-script \
+	gap \
+	gauche \
+	gawk \
+	gcc \
+	gdc \
+	genius \
+	gforth \
+	gfortran \
+	ghc \
+	ghostscript \
+	git \
+	gnat \
+	gnu-smalltalk \
+	gnuplot \
+	gobjc \
+	golang \
+	gpt \
+	gri \
+	groff \
+	groovy \
+	haxe \
+	icont \
+	iconx \
+	intercal \
+	iverilog \
+	jasmin-sable \
+	julia \
+	kaya \
+	libgd2-xpm-dev \
+	libpng12-dev \
+	lisaac \
+	llvm \
+	lua5.2 \
+	make \
+	maven \
+	maxima \
+	mlton \
+	mono-devel \
+	mono-mcs \
+	mono-vbnc \
+	nasm \
+	neko \
+	nickle \
+	ocaml \
+	octave \
+	open-cobol \
+	openjdk-8-jdk \
+	pari-gp \
+	parrot \
+	perl \
+	php5-cli \
+	pike7.8 \
+	python \
+	r-base \
+	ratfor \
+	regina-rexx \
+	rhino \
+	ruby2.1 \
+	scala \
+	scilab \
+	slsh \
+	spl-core \
+	swi-prolog \
+	tcc \
+	tcl \
+	ucblogo \
+	valac \
+	xsltproc \
+	yorick \
+	zoem
 
-# Clone quine code
-#
-RUN git clone https://github.com/mame/quine-relay.git
-WORKDIR /quine-relay
-RUN git reset --hard 9cb87748407c243899a8d81fd13d362dfe92ddfd
-RUN make -C vendor
-
-# Warmup java build
-#
-WORKDIR /java/java
-ADD docker/old_version.tgz /java
-RUN mvn verify dependency:copy-dependencies -DskipTests \
-    && rm -Rf /java
-
-EXPOSE 8080
-ENV PATH $PATH:/usr/games
-
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-DPROD_MODE=true", "-Xmx32M", "-jar", "target/quine.jar"]
-
-# Build java webapp
-#
-WORKDIR /java
-ADD java /java
-RUN mvn verify dependency:copy-dependencies
-
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
-ENV PATH /quine-relay/vendor/local/bin:$PATH
+ENV GOPATH $HOME/go
 ENV CLASSPATH .
+ENV PATH /quine-relay/vendor/local/bin:$PATH:/usr/games
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+EXPOSE 8080
+
+RUN mkdir /tmp/quine
+RUN mkdir /quine-relay
+WORKDIR /quine-relay
+
+RUN (curl -sSL https://github.com/mame/quine-relay/archive/b2599cb4d01fb796b5266d6af285953747848deb.tar.gz | tar zx --strip-components 1) \
+	&& make -C vendor
+
+CMD ["go", "run", "server.go"]
+ADD steps.json ./
+ADD server.go ./
+RUN go get . || true
