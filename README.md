@@ -2,7 +2,7 @@
 
 [Quine relay](https://github.com/mame/quine-relay) implemented with a network ring of Docker containers.
 
-Aka, "The most expensive `echo QR.rb` script ever".
+Aka, "The most expensive `cat QR.rb` script ever".
 
 # Create the cluster
 
