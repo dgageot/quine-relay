@@ -103,15 +103,14 @@ ENV CLASSPATH .
 ENV PATH /quine-relay/vendor/local/bin:$PATH:/usr/games
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 EXPOSE 8080
+CMD ["go", "run", "server.go"]
 
 RUN mkdir /tmp/quine
-RUN mkdir /quine-relay
 WORKDIR /quine-relay
 
 RUN (curl -sSL https://github.com/mame/quine-relay/archive/b2599cb4d01fb796b5266d6af285953747848deb.tar.gz | tar zx --strip-components 1) \
 	&& make -C vendor
 
-CMD ["go", "run", "server.go"]
 ADD steps.json ./
 ADD server.go ./
 RUN go get . || true
