@@ -1,16 +1,23 @@
 #!/bin/bash
 
-LANGUAGES=($(jq -r .[].language steps.json))
+# Remove running containers
+#
 CONTAINERS=($(jq -r .[].container steps.json))
-COUNT=${#LANGUAGES[@]}
 
+docker rm -f ${CONTAINERS[*]}
+
+# Bash strict mode
+#
+set -euo pipefail
+
+# Build the image
+#
 docker build -t quine .
-for CONTAINER in ${CONTAINERS[@]}; do
-	docker rm -f $CONTAINER
-done
 
-set -e
-
+# Run all nodes
+#
+LANGUAGES=($(jq -r .[].language steps.json))
+COUNT=${#LANGUAGES[@]}
 LAST_LANGUAGE="${LANGUAGES[$(($COUNT - 1))]}"
 FIRST_LANGUAGE="${LANGUAGES[0]}"
 
@@ -37,4 +44,6 @@ for i in $(seq $(($COUNT-1)) -1 0); do
 	docker run -d --name=q-"$LANGUAGE" -e LANGUAGE="$LANGUAGE" $LINK $PORT quine
 done
 
+# Show logs
+#
 ./logs.sh ${CONTAINERS[*]}
