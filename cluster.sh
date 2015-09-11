@@ -10,13 +10,15 @@ docker rm -f ${CONTAINERS[*]}
 #
 set -euo pipefail
 
-# Build the image
+# Build the images
 #
-docker build -t quine .
+docker build -t quine -f images/Dockerfile .
+# ...
 
 # Run all nodes
 #
 LANGUAGES=($(jq -r .[].language steps.json))
+IMAGES=($(jq -r .[].image steps.json))
 COUNT=${#LANGUAGES[@]}
 LAST_LANGUAGE="${LANGUAGES[$(($COUNT - 1))]}"
 FIRST_LANGUAGE="${LANGUAGES[0]}"
@@ -25,6 +27,7 @@ PORT=""
 for i in $(seq $(($COUNT-1)) -1 0); do
 	LANGUAGE="${LANGUAGES[$i]}"
 	CONTAINER="${CONTAINERS[$i]}"
+	IMAGE="${IMAGES[$i]}"
 
 	echo "Starting $CONTAINER for $LANGUAGE ($i/$COUNT)..."
 
@@ -41,7 +44,7 @@ for i in $(seq $(($COUNT-1)) -1 0); do
 		PORT=""
 	fi
 
-	docker run -d --name=q-"$LANGUAGE" -e LANGUAGE="$LANGUAGE" $LINK $PORT quine
+	docker run -d --name=q-"$LANGUAGE" -e LANGUAGE="$LANGUAGE" $LINK $PORT $IMAGE
 done
 
 # Show logs
