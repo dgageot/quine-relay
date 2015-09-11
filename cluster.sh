@@ -14,7 +14,7 @@ set -euo pipefail
 #
 docker build -t quine/all -f images/all.dockerfile .
 docker build -t quine/java -f images/java.dockerfile .
-# ...
+docker build -t quine/scala -f images/scala.dockerfile .
 
 # Run all nodes
 #

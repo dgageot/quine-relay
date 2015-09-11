@@ -13,7 +13,7 @@
     "from": "QR.scala",
     "language": "scala",
     "container": "q-scala",
-    "image": "quine/all",
+    "image": "quine/scala",
     "next": "scheme",
     "to": "QR.scm"
   },
