@@ -2,6 +2,21 @@ FROM ubuntu:15.04
 MAINTAINER David Gageot <david@gageot.net>
 
 RUN apt-get update -qq && apt-get install -y \
+	git \
+	golang
+
+ENV GOPATH $HOME/go
+EXPOSE 8080
+CMD ["go", "run", "server.go"]
+
+RUN mkdir /tmp/quine
+WORKDIR /quine-relay
+
+ADD steps.json ./
+ADD server.go ./
+RUN go get . || true
+
+RUN apt-get update -qq && apt-get install -y \
 	afnix \
 	algol68g \
 	aplus-fsf \
@@ -37,12 +52,10 @@ RUN apt-get update -qq && apt-get install -y \
 	gfortran \
 	ghc \
 	ghostscript \
-	git \
 	gnat \
 	gnu-smalltalk \
 	gnuplot \
 	gobjc \
-	golang \
 	gpt \
 	gri \
 	groff \
@@ -73,7 +86,6 @@ RUN apt-get update -qq && apt-get install -y \
 	ocaml \
 	octave \
 	open-cobol \
-	openjdk-8-jdk \
 	pari-gp \
 	parrot \
 	perl \
@@ -85,7 +97,6 @@ RUN apt-get update -qq && apt-get install -y \
 	regina-rexx \
 	rhino \
 	ruby2.1 \
-	scala \
 	scilab \
 	slsh \
 	spl-core \
@@ -98,19 +109,8 @@ RUN apt-get update -qq && apt-get install -y \
 	yorick \
 	zoem
 
-ENV GOPATH $HOME/go
-ENV CLASSPATH .
 ENV PATH /quine-relay/vendor/local/bin:$PATH:/usr/games
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
-EXPOSE 8080
-CMD ["go", "run", "server.go"]
-
-RUN mkdir /tmp/quine
-WORKDIR /quine-relay
 
 RUN (curl -sSL https://github.com/mame/quine-relay/archive/b2599cb4d01fb796b5266d6af285953747848deb.tar.gz | tar zx --strip-components 1) \
 	&& make -C vendor
-
-ADD steps.json ./
-ADD server.go ./
-RUN go get . || true
