@@ -12,7 +12,8 @@ set -euo pipefail
 
 # Build the images
 #
-docker build -t quine -f images/Dockerfile .
+docker build -t quine/all -f images/all.dockerfile .
+docker build -t quine/java -f images/java.dockerfile .
 # ...
 
 # Run all nodes
