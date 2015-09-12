@@ -48,6 +48,8 @@ for i in $(seq $(($COUNT-1)) -1 0); do
 	docker run -d --name=q-"$LANGUAGE" -e LANGUAGE="$LANGUAGE" $LINK $PORT $IMAGE
 done
 
+echo "Started."
+
 # Show logs
 #
 ./logs.sh ${CONTAINERS[*]}
