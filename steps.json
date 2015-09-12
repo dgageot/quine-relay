@@ -544,7 +544,7 @@
     "from": "QR.groovy",
     "language": "groovy",
     "container": "q-groovy",
-    "image": "quine/all",
+    "image": "quine/groovy",
     "next": "haskell",
     "to": "QR.hs"
   },
