@@ -18,5 +18,5 @@ WORKDIR /quine-relay
 ADD server.go ./
 RUN go get . || true
 
-RUN apt-get update -qq && apt-get install -y openjdk-8-jdk
+RUN apt-get update -qq && apt-get install -y scala
 ADD steps.json ./
