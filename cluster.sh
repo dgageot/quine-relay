@@ -12,9 +12,11 @@ set -euo pipefail
 
 # Build the images
 #
-docker build -t quine/all -f images/all.dockerfile .
-docker build -t quine/java -f images/java.dockerfile .
-# ...
+for dockerfile in images/*.dockerfile; do
+	filename=${dockerfile##*/}
+	name=${filename%.*}
+	docker build -t quine/$name -f $dockerfile .
+done;
 
 # Run all nodes
 #
