@@ -607,7 +607,7 @@
     "from": "QR.js",
     "language": "javascript",
     "container": "q-javascript",
-    "image": "quine/all",
+    "image": "quine/rhino",
     "next": "julia",
     "to": "QR.jl"
   },
