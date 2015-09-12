@@ -589,7 +589,7 @@
     "from": "QR.j",
     "language": "jasmin",
     "container": "q-jasmin",
-    "image": "quine/all",
+    "image": "quine/jasmin",
     "next": "java",
     "to": "QR.java"
   },
