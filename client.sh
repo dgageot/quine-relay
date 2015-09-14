@@ -6,5 +6,5 @@ else
   DOCKER_IP=${BASH_REMATCH[1]}
 fi
 
-echo "curl --data-binary @QR.rb http://${DOCKER_IP}:8080/run/ruby"
-curl --data-binary @QR.rb http://${DOCKER_IP}:8080/run/ruby
+set -x
+curl --data-binary @test/QR.rb http://${DOCKER_IP}:8080/run/ruby
