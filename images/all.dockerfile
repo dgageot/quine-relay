@@ -19,47 +19,34 @@ ADD server.go ./
 RUN go get . || true
 
 RUN apt-get update -qq && apt-get install -y \
-	afnix \
-	algol68g \
 	aplus-fsf \
 	asymptote \
 	ats-lang-anairiats \
 	bash \
-	bc \
-	bf \
 	bsdgames \
+	bf \
 	clisp \
-	clojure1.6 \
 	cmake \
-	coffeescript \
-	dc \
 	ecere-sdk \
-	emacs24 \
-	erlang \
 	f2c \
 	falconpl \
 	fp-compiler \
 	fsharp \
 	g++ \
 	gambas3-script \
-	gap \
 	gauche \
 	gawk \
 	gcc \
 	gdc \
-	genius \
 	gforth \
 	gfortran \
 	ghc \
 	ghostscript \
-	gnat \
 	gnu-smalltalk \
-	gnuplot \
 	gobjc \
 	gpt \
 	gri \
 	groff \
-	icont \
 	iconx \
 	intercal \
 	iverilog \
@@ -67,7 +54,6 @@ RUN apt-get update -qq && apt-get install -y \
 	libpng12-dev \
 	lisaac \
 	llvm \
-	lua5.2 \
 	make \
 	mlton \
 	mono-devel \
@@ -85,7 +71,6 @@ RUN apt-get update -qq && apt-get install -y \
 	ruby2.1 \
 	slsh \
 	spl-core \
-	swi-prolog \
 	tcc
 
 RUN (curl -sSL https://github.com/mame/quine-relay/archive/b2599cb4d01fb796b5266d6af285953747848deb.tar.gz | tar zx --strip-components 1) \
