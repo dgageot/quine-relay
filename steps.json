@@ -121,7 +121,7 @@
     "from": "QR.vala",
     "language": "vala",
     "container": "q-vala",
-    "image": "quine/all",
+    "image": "quine/vala",
     "next": "verilog",
     "to": "QR.v"
   },
@@ -157,7 +157,7 @@
     "from": "QR.xslt",
     "language": "xslt",
     "container": "q-xslt",
-    "image": "quine/all",
+    "image": "quine/xslt",
     "next": "yorick",
     "to": "QR.yorick"
   },
@@ -166,7 +166,7 @@
     "from": "QR.yorick",
     "language": "yorick",
     "container": "q-yorick",
-    "image": "quine/all",
+    "image": "quine/yorick",
     "next": "zoem",
     "to": "QR.azm"
   },
@@ -175,7 +175,7 @@
     "from": "QR.azm",
     "language": "zoem",
     "container": "q-zoem",
-    "image": "quine/all",
+    "image": "quine/zoem",
     "next": "aplus",
     "to": "QR.+"
   },
