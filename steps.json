@@ -31,7 +31,7 @@
     "from": "QR.sci",
     "language": "scilab",
     "container": "q-scilab",
-    "image": "quine/all",
+    "image": "quine/scilab",
     "next": "shell",
     "to": "QR.bash"
   },
@@ -94,7 +94,7 @@
     "from": "QR.tcl",
     "language": "tcl",
     "container": "q-tcl",
-    "image": "quine/all",
+    "image": "quine/tcl",
     "next": "thue",
     "to": "QR.t"
   },
@@ -283,7 +283,7 @@
     "from": "QR.boo",
     "language": "boo",
     "container": "q-boo",
-    "image": "quine/all",
+    "image": "quine/boo",
     "next": "brainfuck",
     "to": "QR.bf"
   },
@@ -328,7 +328,7 @@
     "from": "QR.cd",
     "language": "cduce",
     "container": "q-cduce",
-    "image": "quine/all",
+    "image": "quine/cduce",
     "next": "chef",
     "to": "QR.chef"
   },
@@ -355,7 +355,7 @@
     "from": "QR.cob",
     "language": "cobol",
     "container": "q-cobol",
-    "image": "quine/all",
+    "image": "quine/cobol",
     "next": "coffeescript",
     "to": "QR.coffee"
   },
@@ -562,7 +562,7 @@
     "from": "QR.hx",
     "language": "haxe",
     "container": "q-haxe",
-    "image": "quine/all",
+    "image": "quine/haxe",
     "next": "icon",
     "to": "QR.icn"
   },
@@ -616,7 +616,7 @@
     "from": "QR.jl",
     "language": "julia",
     "container": "q-julia",
-    "image": "quine/all",
+    "image": "quine/julia",
     "next": "katya",
     "to": "QR.k"
   },
@@ -625,7 +625,7 @@
     "from": "QR.k",
     "language": "katya",
     "container": "q-katya",
-    "image": "quine/all",
+    "image": "quine/kaya",
     "next": "lazyk",
     "to": "QR.lazy"
   },
@@ -661,7 +661,7 @@
     "from": "QR.logo",
     "language": "logo",
     "container": "q-logo",
-    "image": "quine/all",
+    "image": "quine/logo",
     "next": "lolcode",
     "to": "QR.lol"
   },
@@ -697,7 +697,7 @@
     "from": "QR.mac",
     "language": "maxima",
     "container": "q-maxima",
-    "image": "quine/all",
+    "image": "quine/maxima",
     "next": "msil",
     "to": "QR.il"
   },
@@ -724,7 +724,7 @@
     "from": "QR.neko",
     "language": "neko",
     "container": "q-neko",
-    "image": "quine/all",
+    "image": "quine/neko",
     "next": "nickle",
     "to": "QR.5c"
   },
@@ -733,7 +733,7 @@
     "from": "QR.5c",
     "language": "nickle",
     "container": "q-nickle",
-    "image": "quine/all",
+    "image": "quine/nickle",
     "next": "objectivec",
     "to": "QR.m"
   },
@@ -751,7 +751,7 @@
     "from": "QR.ml",
     "language": "ocaml",
     "container": "q-ocaml",
-    "image": "quine/all",
+    "image": "quine/ocaml",
     "next": "octave",
     "to": "QR.octave"
   },
@@ -760,7 +760,7 @@
     "from": "QR.octave",
     "language": "octave",
     "container": "q-octave",
-    "image": "quine/all",
+    "image": "quine/octave",
     "next": "ook",
     "to": "QR.ook"
   },
@@ -787,7 +787,7 @@
     "from": "QR.pasm",
     "language": "parrot",
     "container": "q-parrot",
-    "image": "quine/all",
+    "image": "quine/parrot",
     "next": "pascal",
     "to": "QR.pas"
   },
@@ -886,7 +886,7 @@
     "from": "QR.ratfor",
     "language": "ratfor",
     "container": "q-ratfor",
-    "image": "quine/all",
+    "image": "quine/ratfor",
     "next": "rexx",
     "to": "QR.rexx"
   },

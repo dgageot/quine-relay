@@ -27,9 +27,7 @@ RUN apt-get update -qq && apt-get install -y \
 	bash \
 	bc \
 	bf \
-	boo \
 	bsdgames \
-	cduce \
 	clisp \
 	clojure1.6 \
 	cmake \
@@ -61,49 +59,34 @@ RUN apt-get update -qq && apt-get install -y \
 	gpt \
 	gri \
 	groff \
-	haxe \
 	icont \
 	iconx \
 	intercal \
 	iverilog \
-	julia \
-	kaya \
 	libgd2-xpm-dev \
 	libpng12-dev \
 	lisaac \
 	llvm \
 	lua5.2 \
 	make \
-	maven \
-	maxima \
 	mlton \
 	mono-devel \
 	mono-mcs \
 	mono-vbnc \
 	nasm \
-	neko \
-	nickle \
-	ocaml \
-	octave \
-	open-cobol \
 	openjdk-8-jdk \
 	pari-gp \
-	parrot \
 	perl \
 	php5-cli \
 	pike7.8 \
 	python \
 	r-base \
-	ratfor \
 	regina-rexx \
 	ruby2.1 \
-	scilab \
 	slsh \
 	spl-core \
 	swi-prolog \
-	tcc \
-	tcl \
-	ucblogo
+	tcc
 
 RUN (curl -sSL https://github.com/mame/quine-relay/archive/b2599cb4d01fb796b5266d6af285953747848deb.tar.gz | tar zx --strip-components 1) \
 	&& make -C vendor
