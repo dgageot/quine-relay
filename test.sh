@@ -27,13 +27,13 @@ cd test
 for i in $(seq 0 1 $(($COUNT-1))); do
 	LANGUAGE="${LANGUAGES[$i]}"
 	CONTAINER="${CONTAINERS[$i]}"
-  IMAGE="${IMAGES[$i]}"
-  COMMAND="${COMMANDS[$i]}"
-  FROM="${FROMS[$i]}"
-  TO="${TOS[$i]}"
+	IMAGE="${IMAGES[$i]}"
+	COMMAND="${COMMANDS[$i]}"
+	FROM="${FROMS[$i]}"
+	TO="${TOS[$i]}"
 
 	echo "Run $LANGUAGE..."
-  docker run --rm -ti -v $(pwd)/$FROM:/quine-relay/$FROM:ro -v $(pwd):/output $IMAGE bash -c "$COMMAND && cp $TO /output/$TO"
+	docker run --rm -ti -v $(pwd)/$FROM:/quine-relay/$FROM:ro -v $(pwd):/output $IMAGE bash -c "$COMMAND && cp $TO /output/$TO"
 done
 
 diff QR.rb QR2.rb && echo "SUCCESS"
