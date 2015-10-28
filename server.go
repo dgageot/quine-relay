@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -31,27 +30,27 @@ func RunHandler(r *http.Request) ([]byte, error) {
 	// Read POST query body
 	script, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		return nil, errors.New("Unable to read query body: " + err.Error())
+		return nil, fmt.Errorf("Unable to read query body: %s", err)
 	}
 
 	// Read all steps
 	var steps []Step
 	err = readJSON("steps.json", &steps)
 	if err != nil {
-		return nil, errors.New("Unable to read steps.json: " + err.Error())
+		return nil, fmt.Errorf("Unable to read steps.json: %s", err)
 	}
 
 	// Find language position in chain
 	index := languagePosition(steps, language)
 	if index == -1 {
-		return nil, errors.New("Unknown language: " + language)
+		return nil, fmt.Errorf("Unknown language: %s", language)
 	}
 	step := steps[index]
 
 	// Run script
 	result, err := runScript(script, step)
 	if err != nil {
-		return nil, errors.New("Unable to run script: " + err.Error())
+		return nil, fmt.Errorf("Unable to run script: %s", err)
 	}
 
 	// Last in chain?
@@ -62,13 +61,13 @@ func RunHandler(r *http.Request) ([]byte, error) {
 	// Call next in chain
 	resp, err := http.Post(("http://localhost:8080/run/" + step.Next), "application/octet-stream", bytes.NewBuffer(result))
 	if err != nil {
-		return nil, errors.New("Unable to call next one in chain: " + err.Error())
+		return nil, fmt.Errorf("Unable to call next one in chain: %s", err)
 	}
 
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil, errors.New("Unable to read response from next in chain: " + err.Error())
+		return nil, fmt.Errorf("Unable to read response from next in chain: %s", err)
 	}
 
 	return body, nil
@@ -85,8 +84,8 @@ func runScript(script []byte, step Step) ([]byte, error) {
 
 	cmd := exec.Command("bash", "-c", step.Command)
 	cmd.Dir = "/tmp/quine/"
-	if err := cmd.Run(); err != nil {
-		return nil, err
+	if output, err := cmd.CombinedOutput(); err != nil {
+		return nil, fmt.Errorf("Failed to run command: %s %s", string(output), err)
 	}
 
 	// Read output
@@ -119,17 +118,6 @@ func readJSON(path string, value interface{}) error {
 	}
 
 	return json.Unmarshal(file, &value)
-}
-
-// readLines returns the lines of a given file.
-func readLines(path string) ([]string, error) {
-	content, err := ioutil.ReadFile(path)
-	if err != nil {
-		return nil, err
-	}
-
-	lines := strings.Split(string(content), "\n")
-	return lines, nil
 }
 
 // languagePosition returns the index of a given language in a steps array. -1 if not found.

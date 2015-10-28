@@ -15,8 +15,8 @@ CMD ["go", "run", "server.go"]
 RUN mkdir /tmp/quine
 WORKDIR /quine-relay
 
+RUN apt-get update -qq && apt-get install -y erlang
+
 ADD server.go ./
 RUN go get . || true
-
-RUN apt-get update -qq && apt-get install -y erlang
 ADD steps.json ./

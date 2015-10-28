@@ -15,9 +15,6 @@ CMD ["go", "run", "server.go"]
 RUN mkdir /tmp/quine
 WORKDIR /quine-relay
 
-ADD server.go ./
-RUN go get . || true
-
 RUN apt-get update -qq && apt-get install -y \
 	aplus-fsf \
 	asymptote \
@@ -76,4 +73,6 @@ RUN apt-get update -qq && apt-get install -y \
 RUN (curl -sSL https://github.com/mame/quine-relay/archive/b2599cb4d01fb796b5266d6af285953747848deb.tar.gz | tar zx --strip-components 1) \
 	&& make -C vendor
 
+ADD server.go ./
+RUN go get . || true
 ADD steps.json ./
