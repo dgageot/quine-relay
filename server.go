@@ -14,6 +14,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Step describes each step in the quine.
 type Step struct {
 	Language string
 	Next     string
@@ -22,6 +23,7 @@ type Step struct {
 	To       string
 }
 
+// RunHandler is the main entry point for the http server.
 func RunHandler(r *http.Request) ([]byte, error) {
 	vars := mux.Vars(r)
 	language := vars["language"]
@@ -34,7 +36,7 @@ func RunHandler(r *http.Request) ([]byte, error) {
 
 	// Read all steps
 	var steps []Step
-	err = readJson("steps.json", &steps)
+	err = readJSON("steps.json", &steps)
 	if err != nil {
 		return nil, errors.New("Unable to read steps.json: " + err.Error())
 	}
@@ -109,8 +111,8 @@ func withError(handler func(*http.Request) ([]byte, error)) http.HandlerFunc {
 	}
 }
 
-// readJson reads a json file.
-func readJson(path string, value interface{}) error {
+// readJSON reads a json file.
+func readJSON(path string, value interface{}) error {
 	file, err := ioutil.ReadFile(path)
 	if err != nil {
 		return err
