@@ -17,6 +17,6 @@ WORKDIR /quine-relay
 
 RUN apt-get update -qq && apt-get install -y afnix
 
-ADD server.go ./
+COPY server.go ./
 RUN go get . || true
-ADD steps.json ./
+COPY steps.json ./
