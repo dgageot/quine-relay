@@ -12,6 +12,7 @@ set -euo pipefail
 
 # Build the images
 #
+docker build -t quine/base .
 for dockerfile in images/*.dockerfile; do
 	filename=${dockerfile##*/}
 	name=${filename%.*}
