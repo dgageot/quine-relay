@@ -81,7 +81,7 @@ func runScript(script []byte, step Step) ([]byte, error) {
 		return nil, err
 	}
 
-	cmd := exec.Command("bash", "-c", fmt.Sprintf("%q", step.Command))
+	cmd := exec.Command("bash", "-c", step.Command)
 	cmd.Dir = "/tmp/quine/"
 	if output, err := cmd.CombinedOutput(); err != nil {
 		return nil, fmt.Errorf("Failed to run command: %s %s", string(output), err)
