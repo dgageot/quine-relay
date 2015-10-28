@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
-	"strings"
 
 	"github.com/gorilla/mux"
 )
