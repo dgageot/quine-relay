@@ -73,7 +73,7 @@ func RunHandler(r *http.Request) ([]byte, error) {
 }
 
 func runScript(script []byte, step Step) ([]byte, error) {
-	fmt.Printf("%s: %s", step.Language, step.Command)
+	fmt.Printf("%s: %s\n", step.Language, step.Command)
 
 	// Write input
 	err := ioutil.WriteFile("/tmp/quine/"+step.From, script, os.ModePerm)
