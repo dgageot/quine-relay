@@ -33,7 +33,7 @@ for i in $(seq 0 1 $(($COUNT-1))); do
 	TO="${TOS[$i]}"
 
 	echo "Run $LANGUAGE..."
-	docker run --rm -ti -v $(pwd)/$FROM:/quine-relay/$FROM:ro -v $(pwd):/output $IMAGE bash -c "$COMMAND && cp $TO /output/$TO"
+	docker run --rm -ti -v $(pwd)/$FROM:/root/go/src/github.com/dgageot/quine-relay/$FROM:ro -v $(pwd):/output $IMAGE bash -c "$COMMAND && cp $TO /output/$TO"
 done
 
 diff QR.rb QR2.rb && echo "SUCCESS"

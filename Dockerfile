@@ -12,5 +12,5 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV GO15VENDOREXPERIMENT 1
 EXPOSE 8080
 CMD ["go", "run", "server.go"]
-WORKDIR $GOPATH/src/github.com/quine-relay
+WORKDIR $GOPATH/src/github.com/dgageot/quine-relay
 RUN mkdir /tmp/quine
