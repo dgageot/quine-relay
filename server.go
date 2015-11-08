@@ -23,8 +23,7 @@ type Step struct {
 
 // RunHandler is the main entry point for the http server.
 func RunHandler(r *http.Request) ([]byte, error) {
-	vars := mux.Vars(r)
-	language := vars["language"]
+	language := os.Getenv("LANGUAGE")
 
 	// Read POST query body
 	script, err := ioutil.ReadAll(r.Body)
@@ -58,8 +57,8 @@ func RunHandler(r *http.Request) ([]byte, error) {
 	}
 
 	// Call next in chain
-	nextUrl := fmt.Sprintf("http://%s:8080/run/%s", step.Next, step.Next)
-	resp, err := http.Post(nextUrl, "application/octet-stream", bytes.NewBuffer(result))
+	nextURL := fmt.Sprintf("http://%s:8080/run", step.Next)
+	resp, err := http.Post(nextURL, "application/octet-stream", bytes.NewBuffer(result))
 	if err != nil {
 		return nil, fmt.Errorf("Unable to call next one in chain: %s", err)
 	}
@@ -94,7 +93,7 @@ func runScript(script []byte, step Step) ([]byte, error) {
 
 func main() {
 	mux := mux.NewRouter()
-	mux.HandleFunc("/run/{language}", withError(RunHandler)).Methods("POST")
+	mux.HandleFunc("/run", withError(RunHandler)).Methods("POST")
 	http.ListenAndServe(":8080", mux)
 }
 

@@ -58,6 +58,4 @@ RUN apt-get update -qq && apt-get install -y \
 RUN (curl -sSL https://github.com/mame/quine-relay/archive/b2599cb4d01fb796b5266d6af285953747848deb.tar.gz | tar zx --strip-components 1) \
 	&& make -C vendor
 
-COPY server.go ./
-RUN go get . || true
-COPY steps.json ./
+COPY . ./

@@ -1,4 +1,6 @@
 .git
+images
 test
 *.sh
+Dockerfile
 README.md
