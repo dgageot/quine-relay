@@ -58,7 +58,8 @@ func RunHandler(r *http.Request) ([]byte, error) {
 	}
 
 	// Call next in chain
-	resp, err := http.Post(("http://next:8080/run/" + step.Next), "application/octet-stream", bytes.NewBuffer(result))
+	nextUrl := fmt.Sprintf("http://%s:8080/run/%s", step.Next, step.Next)
+	resp, err := http.Post(nextUrl, "application/octet-stream", bytes.NewBuffer(result))
 	if err != nil {
 		return nil, fmt.Errorf("Unable to call next one in chain: %s", err)
 	}
