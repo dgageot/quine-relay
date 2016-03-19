@@ -55,7 +55,7 @@ RUN apt-get update -qq && apt-get install -y \
 	spl-core \
 	tcc
 
-RUN (curl -sSL https://github.com/mame/quine-relay/archive/b2599cb4d01fb796b5266d6af285953747848deb.tar.gz | tar zx --strip-components 1) \
+RUN (curl -sSL https://github.com/mame/quine-relay/archive/86f3b4d17faac3b9626dd35eaaada055e12769fa.tar.gz | tar zx --strip-components 1) \
 	&& make -C vendor
 
 COPY . ./

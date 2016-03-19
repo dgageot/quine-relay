@@ -81,7 +81,7 @@
     "to": "QR.sq"
   },
   {
-    "command": "ruby /quine-relay/vendor/subleq.rb QR.sq > QR.tcl",
+    "command": "ruby /root/go/src/github.com/dgageot/quine-relay/vendor/subleq.rb QR.sq > QR.tcl",
     "from": "QR.sq",
     "language": "subleq",
     "container": "q-subleq",
@@ -99,7 +99,7 @@
     "to": "QR.t"
   },
   {
-    "command": "ruby /quine-relay/vendor/thue.rb QR.t > QR.unl",
+    "command": "ruby /root/go/src/github.com/dgageot/quine-relay/vendor/thue.rb QR.t > QR.unl",
     "from": "QR.t",
     "language": "thue",
     "container": "q-thue",
@@ -108,7 +108,7 @@
     "to": "QR.unl"
   },
   {
-    "command": "ruby /quine-relay/vendor/unlambda.rb QR.unl > QR.vala",
+    "command": "ruby /root/go/src/github.com/dgageot/quine-relay/vendor/unlambda.rb QR.unl > QR.vala",
     "from": "QR.unl",
     "language": "unlambda",
     "container": "q-unlambda",
@@ -144,7 +144,7 @@
     "to": "QR.ws"
   },
   {
-    "command": "ruby /quine-relay/vendor/whitespace.rb QR.ws > QR.xslt",
+    "command": "ruby /root/go/src/github.com/dgageot/quine-relay/vendor/whitespace.rb QR.ws > QR.xslt",
     "from": "QR.ws",
     "language": "whitespace",
     "container": "q-whitespace",
@@ -216,7 +216,7 @@
     "to": "QR.ante"
   },
   {
-    "command": "ruby /quine-relay/vendor/ante.rb QR.ante > QR.asy",
+    "command": "ruby /root/go/src/github.com/dgageot/quine-relay/vendor/ante.rb QR.ante > QR.asy",
     "from": "QR.ante",
     "language": "ante",
     "container": "q-ante",
@@ -270,7 +270,7 @@
     "to": "QR.Blc"
   },
   {
-    "command": "ruby /quine-relay/vendor/blc.rb < QR.Blc > QR.boo",
+    "command": "ruby /root/go/src/github.com/dgageot/quine-relay/vendor/blc.rb < QR.Blc > QR.boo",
     "from": "QR.Blc",
     "language": "blc8",
     "container": "q-blc8",
@@ -333,7 +333,7 @@
     "to": "QR.chef"
   },
   {
-    "command": "PERL5LIB=/quine-relay/vendor/local/lib/perl5 compilechef QR.chef QR.chef.pl && perl QR.chef.pl > QR.clj",
+    "command": "PERL5LIB=/root/go/src/github.com/dgageot/quine-relay/vendor/local/lib/perl5 compilechef QR.chef QR.chef.pl && perl QR.chef.pl > QR.clj",
     "from": "QR.chef",
     "language": "chef",
     "container": "q-chef",
@@ -441,7 +441,7 @@
     "to": "QR.false"
   },
   {
-    "command": "ruby /quine-relay/vendor/false.rb QR.false > QR.fs",
+    "command": "ruby /root/go/src/github.com/dgageot/quine-relay/vendor/false.rb QR.false > QR.fs",
     "from": "QR.false",
     "language": "false",
     "container": "q-false",
@@ -765,7 +765,7 @@
     "to": "QR.ook"
   },
   {
-    "command": "ruby /quine-relay/vendor/ook-to-bf.rb QR.ook QR.ook.bf && bf QR.ook.bf > QR.gp",
+    "command": "ruby /root/go/src/github.com/dgageot/quine-relay/vendor/ook-to-bf.rb QR.ook QR.ook.bf && bf QR.ook.bf > QR.gp",
     "from": "QR.ook",
     "language": "ook",
     "container": "q-ook",
