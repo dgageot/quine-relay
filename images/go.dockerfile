@@ -1,0 +1,3 @@
+FROM quine/base
+
+COPY . ./
