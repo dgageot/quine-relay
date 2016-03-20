@@ -32,7 +32,7 @@ for i in $(seq 0 1 $(($COUNT-1))); do
 	FROM="${FROMS[$i]}"
 	TO="${TOS[$i]}"
 
-	echo "Run $LANGUAGE..."
+	echo "Run $i $LANGUAGE..."
 	docker run --rm -ti -v $(pwd)/$FROM:/root/go/src/github.com/dgageot/quine-relay/$FROM:ro -v $(pwd):/output $IMAGE bash -c "$COMMAND && cp $TO /output/$TO"
 done
 

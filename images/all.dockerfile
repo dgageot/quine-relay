@@ -8,18 +8,14 @@ RUN apt-get update -qq && apt-get install -y \
 	bsdgames \
 	bf \
 	clisp \
-	cmake \
 	ecere-sdk \
 	f2c \
 	falconpl \
 	fp-compiler \
 	fsharp \
-	g++ \
 	gambas3-script \
 	gauche \
 	gawk \
-	gcc \
-	gdc \
 	gforth \
 	gfortran \
 	ghc \
@@ -28,16 +24,13 @@ RUN apt-get update -qq && apt-get install -y \
 	gobjc \
 	gpt \
 	gri \
-	groff \
 	iconx \
 	intercal \
 	iverilog \
-	libgd2-xpm-dev \
 	libpng12-dev \
 	lisaac \
 	llvm \
 	make \
-	mlton \
 	mono-devel \
 	mono-mcs \
 	mono-vbnc \
@@ -55,7 +48,7 @@ RUN apt-get update -qq && apt-get install -y \
 	spl-core \
 	tcc
 
-RUN (curl -sSL https://github.com/mame/quine-relay/archive/86f3b4d17faac3b9626dd35eaaada055e12769fa.tar.gz | tar zx --strip-components 1) \
-	&& make -C vendor
+# mlton,
+# make unzip cmake gcc g++ gdc libgd2-xpm-dev groff
 
 COPY . ./
