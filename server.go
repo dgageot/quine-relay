@@ -8,8 +8,6 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
-
-	"github.com/gorilla/mux"
 )
 
 // Step describes each step in the quine.
@@ -92,9 +90,8 @@ func runScript(script []byte, step Step) ([]byte, error) {
 }
 
 func main() {
-	mux := mux.NewRouter()
-	mux.HandleFunc("/run", withError(RunHandler)).Methods("POST")
-	http.ListenAndServe(":8080", mux)
+	http.Handle("/run", withError(RunHandler))
+	http.ListenAndServe(":8080", nil)
 }
 
 func withError(handler func(*http.Request) ([]byte, error)) http.HandlerFunc {
