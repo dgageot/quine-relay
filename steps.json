@@ -40,7 +40,7 @@
     "from": "QR.bash",
     "language": "shell",
     "container": "q-shell",
-    "image": "quine/bash",
+    "image": "quine/shell",
     "next": "slang",
     "to": "QR.sl"
   },
@@ -76,7 +76,7 @@
     "from": "QR.sml",
     "language": "ml",
     "container": "q-ml",
-    "image": "quine/mlton",
+    "image": "quine/ml",
     "next": "subleq",
     "to": "QR.sq"
   },
@@ -292,7 +292,7 @@
     "from": "QR.bf",
     "language": "brainfuck",
     "container": "q-brainfuck",
-    "image": "quine/bf",
+    "image": "quine/brainfuck",
     "next": "c",
     "to": "QR.c"
   },
@@ -401,15 +401,15 @@
     "language": "ec",
     "container": "q-ec",
     "image": "quine/ec",
-    "next": "emacslist",
+    "next": "emacslisp",
     "to": "QR.el"
   },
   {
     "command": "emacs -Q --script QR.el > QR.erl",
     "from": "QR.el",
-    "language": "emacslist",
-    "container": "q-emacslist",
-    "image": "quine/emacs",
+    "language": "emacslisp",
+    "container": "q-emacslisp",
+    "image": "quine/emacslisp",
     "next": "erlang",
     "to": "QR.erl"
   },
@@ -499,7 +499,7 @@
     "from": "QR.gel",
     "language": "gel",
     "container": "q-gel",
-    "image": "quine/genius",
+    "image": "quine/gel",
     "next": "gnuplot",
     "to": "QR.plt"
   },
@@ -553,7 +553,7 @@
     "from": "QR.hs",
     "language": "haskell",
     "container": "q-haskell",
-    "image": "quine/ghc",
+    "image": "quine/haskell",
     "next": "haxe",
     "to": "QR.hx"
   },
@@ -571,7 +571,7 @@
     "from": "QR.icn",
     "language": "icon",
     "container": "q-icon",
-    "image": "quine/icont",
+    "image": "quine/icon",
     "next": "intercal",
     "to": "QR.i"
   },
@@ -607,7 +607,7 @@
     "from": "QR.js",
     "language": "javascript",
     "container": "q-javascript",
-    "image": "quine/rhino",
+    "image": "quine/javascript",
     "next": "julia",
     "to": "QR.jl"
   },
@@ -625,7 +625,7 @@
     "from": "QR.k",
     "language": "katya",
     "container": "q-katya",
-    "image": "quine/kaya",
+    "image": "quine/katya",
     "next": "lazyk",
     "to": "QR.lazy"
   },

@@ -1,6 +1,7 @@
 .git
-images
-test
-*.sh
+.idea
 Dockerfile
 README.md
+*.sh
+images
+test
