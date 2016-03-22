@@ -6,13 +6,8 @@ CONTAINERS=($(jq -r .[].container steps.json))
 set -euo pipefail
 IFS=$'\n\t'
 
-# Build the images
+# Build the base image
 docker build -t quine/base .
-for dockerfile in images/*.dockerfile; do
-	filename=${dockerfile##*/}
-	name=${filename%.*}
-	docker build -t quine/$name -f $dockerfile .
-done
 
 LANGUAGES=($(jq -r .[].language steps.json))
 IMAGES=($(jq -r .[].image steps.json))
@@ -30,7 +25,7 @@ for i in $(seq 0 1 $(($COUNT-1))); do
 	FROM="${FROMS[$i]}"
 	TO="${TOS[$i]}"
 
-#	docker build -t quine/$LANGUAGE -f ../images/$LANGUAGE.dockerfile ..
+	docker build -t quine/$LANGUAGE -f ../images/$LANGUAGE.dockerfile ..
 
 	echo "Run $i $LANGUAGE..."
 	docker run --rm -ti \

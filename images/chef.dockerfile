@@ -5,4 +5,6 @@ RUN apt-get update -qq && apt-get install -y curl make unzip cmake gcc g++ gdc l
 RUN (curl -sSL https://github.com/mame/quine-relay/archive/86f3b4d17faac3b9626dd35eaaada055e12769fa.tar.gz | tar zx --strip-components 1) \
 	&& make -C vendor
 
+ENV PATH /root/go/src/github.com/dgageot/quine-relay/vendor/local/bin:$PATH
+
 COPY . ./
