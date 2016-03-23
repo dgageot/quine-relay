@@ -55,7 +55,8 @@ func RunHandler(r *http.Request) ([]byte, error) {
 	}
 
 	// Call next in chain
-	nextURL := fmt.Sprintf("http://%s:8080/run", step.Next)
+	port := 8080 + index + 1
+	nextURL := fmt.Sprintf("http://quine-%s:%d/run", step.Next, port)
 	resp, err := http.Post(nextURL, "application/octet-stream", bytes.NewBuffer(result))
 	if err != nil {
 		return nil, fmt.Errorf("Unable to call next one in chain: %s", err)
@@ -91,7 +92,7 @@ func runScript(script []byte, step Step) ([]byte, error) {
 
 func main() {
 	http.Handle("/run", withError(RunHandler))
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe("0.0.0.0:8080", nil)
 }
 
 func withError(handler func(*http.Request) ([]byte, error)) http.HandlerFunc {

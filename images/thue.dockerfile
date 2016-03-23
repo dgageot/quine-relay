@@ -1,4 +1,4 @@
-FROM dgageot/quine
+FROM dgageot/quine:base
 
 RUN apt-get update -qq && apt-get install -y curl make unzip cmake gcc g++ gdc libgd2-xpm-dev groff	ruby2.1 bf
 

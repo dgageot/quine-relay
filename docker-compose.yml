@@ -1,0 +1,14 @@
+version: '2'
+
+networks:
+  quine:
+    driver: overlay
+    
+services:
+  ruby:
+    image: 'dgageot/quine:ruby'
+    ports:
+      - "8080:8080"
+    networks:
+      - quine
+    container_name: ruby

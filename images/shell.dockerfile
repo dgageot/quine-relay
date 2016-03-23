@@ -1,3 +1,3 @@
-FROM dgageot/quine
+FROM dgageot/quine:base
 
 COPY . ./
