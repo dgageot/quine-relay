@@ -8,7 +8,7 @@ IFS=$'\n\t'
 
 # Build the base image
 docker build -t dgageot/quine .
-docker push dgageot/quine
+#docker push dgageot/quine
 
 LANGUAGES=($(jq -r .[].language steps.json))
 IMAGES=($(jq -r .[].image steps.json))
@@ -27,7 +27,7 @@ for i in $(seq 0 1 $(($COUNT-1))); do
 	TO="${TOS[$i]}"
 
 	docker build -t $IMAGE -f ../images/$LANGUAGE.dockerfile ..
-	docker push $IMAGE
+	#docker push $IMAGE
 
 	echo "Run $i $LANGUAGE..."
 	docker run --rm -ti \
