@@ -1,26 +1,12 @@
 #!/bin/bash
 
-# Remove running containers
-#
-LANGUAGES=($(jq -r .[].language steps.json))
-
-docker rm -f ${LANGUAGES[*]}
+./remove.sh
 
 # Bash strict mode
-#
 set -euo pipefail
 
-# Build the images
-#
-docker build -t quine/base .
-for dockerfile in images/*.dockerfile; do
-	filename=${dockerfile##*/}
-	name=${filename%.*}
-	docker build -t quine/$name -f $dockerfile .
-done;
-
 # Run all nodes
-#
+LANGUAGES=($(jq -r .[].language steps.json))
 IMAGES=($(jq -r .[].image steps.json))
 COUNT=${#LANGUAGES[@]}
 
@@ -35,11 +21,9 @@ for i in $(eval echo "{0..$(($COUNT - 1))}"); do
 
 	echo "Starting $LANGUAGE ($i/$COUNT)..."
 
-	docker run -d --name="$LANGUAGE" -e LANGUAGE="$LANGUAGE" --net=quine $PORT $IMAGE
+	docker run -d --name="quine-$LANGUAGE" -e LANGUAGE="$LANGUAGE" $PORT $IMAGE
 done
 
 echo "Started."
 
-# Show logs
-#
-./logs.sh ${CONTAINERS[*]}
+./logs.sh

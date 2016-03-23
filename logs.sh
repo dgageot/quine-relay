@@ -9,7 +9,7 @@ function killJobs() {
 
 trap killJobs EXIT
 
-for NAME in "$@"; do
+for NAME in $(docker ps -a -q -f label=demo="quine-relay"); do
 	docker logs -f $NAME &
 done
 

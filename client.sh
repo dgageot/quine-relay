@@ -7,4 +7,4 @@ else
 fi
 
 set -x
-curl --data-binary @test/QR.rb http://${DOCKER_IP}:8080/run/ruby
+curl --data-binary @test/QR.rb http://${DOCKER_IP}:8080/run
